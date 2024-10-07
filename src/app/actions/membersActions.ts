@@ -9,6 +9,7 @@ export async function getMembers() {
     if (!session?.user) return null;
 
     try {
+
         return prisma.member.findMany({
             where: {
                 NOT: {
@@ -18,11 +19,13 @@ export async function getMembers() {
         });
     } catch (error) {
         console.log(error)
+
     }
 }
 
 export async function getMemberByUerId(userId: string) {
     try {
+
         return prisma.member.findUnique({ where: { userId } })
     } catch (error) {
         console.log(error)
